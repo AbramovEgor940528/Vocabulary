@@ -16,34 +16,34 @@ final class TableViewCell: UITableViewCell {
         let backgroundColour: UIColor
     }
     
-    private enum Constraints {
-        enum roundBackgroundView {
+    private enum Constraint {
+        enum RoundBackgroundView {
             static let lateralSpacing: CGFloat = 8
-            static let verticacSpacing: CGFloat = 4
+            static let verticalSpacing: CGFloat = 4
             static let height: CGFloat = 120
         }
-        enum wordLabel {
+        enum WordLabel {
             static let topSpacing: CGFloat = 40
             static let bottomSpacing: CGFloat = 60
             static let leadingSpacing: CGFloat = 16
             static let trailingSpacing: CGFloat = 8
         }
-        enum transcriptionLabel {
+        enum TranscriptionLabel {
             static let topSpacing: CGFloat = 42
             static let bottomSpacing: CGFloat = 64
             static let lateralSpacing: CGFloat = 8
         }
-        enum translationLabel {
-            static let topSpacing: CGFloat = 60
-            static let bottomSpacing: CGFloat = 36
+        enum TranslationLabel {
+            static let topSpacing: CGFloat = 0
+            static let trailingSpacing: CGFloat = 8
             static let leadingSpacing: CGFloat = 16
         }
-        enum addButton {
-            static let verticacSpacing: CGFloat = 40
+        enum AddButton {
+            static let side: CGFloat = 40
             static let trailingSpacing: CGFloat = 12
         }
-        enum playButton {
-            static let verticacSpacing: CGFloat = 40
+        enum PlayButton {
+            static let side: CGFloat = 40
             static let trailingSpacing: CGFloat = 12
         }
     }
@@ -87,6 +87,7 @@ final class TableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .red
         view.layer.cornerRadius = 20
+
         
         return view
     }()
@@ -95,6 +96,10 @@ final class TableViewCell: UITableViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "plus"), for: .normal)
+//        let action = UIAction { _ in
+//        print("Нажали кнопку добавить")
+//        }
+//        button.addAction (action, for: .touchUpInside)
         
         return button
     }()
@@ -112,11 +117,11 @@ final class TableViewCell: UITableViewCell {
         transcriptionLabel.text = model.transcription
         translationLabel.text = model.translation
         roundBackgroundView.backgroundColor = model.backgroundColour
-        
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.isUserInteractionEnabled = false
         setupCell()
     }
     
@@ -130,87 +135,75 @@ final class TableViewCell: UITableViewCell {
         roundBackgroundView.addSubview(translationLabel)
         roundBackgroundView.addSubview(addButton)
         roundBackgroundView.addSubview(playButton)
+        wordLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         NSLayoutConstraint.activate([
             roundBackgroundView.topAnchor.constraint(
                 equalTo: topAnchor,
-                constant: Constraints.roundBackgroundView.verticacSpacing),
+                constant: Constraint.RoundBackgroundView.verticalSpacing),
             roundBackgroundView.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
-                constant: -Constraints.roundBackgroundView.verticacSpacing),
+                constant: -Constraint.RoundBackgroundView.verticalSpacing),
             roundBackgroundView.leadingAnchor.constraint(
                 equalTo: leadingAnchor,
-                constant: Constraints.roundBackgroundView.lateralSpacing),
+                constant: Constraint.RoundBackgroundView.lateralSpacing),
             roundBackgroundView.trailingAnchor.constraint(
                 equalTo: trailingAnchor,
-                constant: -Constraints.roundBackgroundView.lateralSpacing),
+                constant: -Constraint.RoundBackgroundView.lateralSpacing),
             roundBackgroundView.heightAnchor.constraint(
-                equalToConstant: Constraints.roundBackgroundView.height),
+                equalToConstant: Constraint.RoundBackgroundView.height),
             
             wordLabel.topAnchor.constraint(
                 equalTo: roundBackgroundView.topAnchor,
-                constant: Constraints.wordLabel.topSpacing),
-            wordLabel.bottomAnchor.constraint(
-                equalTo: roundBackgroundView.bottomAnchor,
-                constant: -Constraints.wordLabel.bottomSpacing),
+                constant: Constraint.WordLabel.topSpacing),
             wordLabel.leadingAnchor.constraint(
                 equalTo: roundBackgroundView.leadingAnchor,
-                constant: Constraints.wordLabel.leadingSpacing),
+                constant: Constraint.WordLabel.leadingSpacing),
             wordLabel.trailingAnchor.constraint(
                 equalTo: transcriptionLabel.leadingAnchor,
-                constant: -Constraints.wordLabel.trailingSpacing),
+                constant: -Constraint.WordLabel.trailingSpacing),
             
             transcriptionLabel.topAnchor.constraint(
                 equalTo: roundBackgroundView.topAnchor,
-                constant: Constraints.transcriptionLabel.topSpacing),
-            transcriptionLabel.bottomAnchor.constraint(
-                equalTo: roundBackgroundView.bottomAnchor,
-                constant: -Constraints.transcriptionLabel.bottomSpacing),
+                constant: Constraint.TranscriptionLabel.topSpacing),
             transcriptionLabel.leadingAnchor.constraint(
                 equalTo: wordLabel.trailingAnchor,
-                constant: Constraints.transcriptionLabel.lateralSpacing),
+                constant: Constraint.TranscriptionLabel.lateralSpacing),
             transcriptionLabel.trailingAnchor.constraint(
                 equalTo: playButton.leadingAnchor,
-                constant: -Constraints.transcriptionLabel.lateralSpacing),
+                constant: -Constraint.TranscriptionLabel.lateralSpacing),
+            transcriptionLabel.lastBaselineAnchor.constraint(
+                equalTo: wordLabel.lastBaselineAnchor),
             
             translationLabel.topAnchor.constraint(
-                equalTo: roundBackgroundView.topAnchor,
-                constant: Constraints.translationLabel.topSpacing),
+                equalTo: wordLabel.bottomAnchor,
+                constant: Constraint.TranslationLabel.topSpacing),
             translationLabel.leadingAnchor.constraint(
                 equalTo: roundBackgroundView.leadingAnchor,
-                constant: Constraints.translationLabel.leadingSpacing),
-            translationLabel.bottomAnchor.constraint(
-                equalTo: roundBackgroundView.bottomAnchor,
-                constant: -Constraints.translationLabel.bottomSpacing),
-//            translationLabel.trailingAnchor.constraint(
-//                equalTo: playButton.leadingAnchor,
-//                constant: -8),
+                constant: Constraint.TranslationLabel.leadingSpacing),
+            translationLabel.trailingAnchor.constraint(
+                equalTo: playButton.leadingAnchor,
+                constant: -Constraint.TranslationLabel.trailingSpacing),
             
-            addButton.topAnchor.constraint(
-                equalTo:roundBackgroundView.topAnchor,
-                constant: Constraints.addButton.verticacSpacing),
-            addButton.bottomAnchor.constraint(
-                equalTo: roundBackgroundView.bottomAnchor,
-                constant: -Constraints.addButton.verticacSpacing),
-            addButton.trailingAnchor.constraint(
-                equalTo: roundBackgroundView.trailingAnchor,
-                constant: -Constraints.addButton.trailingSpacing),
-            
-            playButton.topAnchor.constraint(
-                equalTo: roundBackgroundView.topAnchor,
-                constant: Constraints.playButton.verticacSpacing),
-            playButton.bottomAnchor.constraint(
-                equalTo: roundBackgroundView.bottomAnchor,
-                constant: -Constraints.playButton.verticacSpacing),
+            playButton.heightAnchor.constraint(
+                equalToConstant: Constraint.PlayButton.side),
+            playButton.widthAnchor.constraint(
+                equalToConstant: Constraint.PlayButton.side),
+            playButton.centerYAnchor.constraint(
+                equalTo: roundBackgroundView.centerYAnchor),
             playButton.trailingAnchor.constraint(
                 equalTo: addButton.leadingAnchor,
-                constant: -Constraints.playButton.trailingSpacing),
+                constant: -Constraint.PlayButton.trailingSpacing),
             
+            addButton.heightAnchor.constraint(
+                equalToConstant: Constraint.AddButton.side),
+            addButton.widthAnchor.constraint(
+                equalToConstant: Constraint.AddButton.side),
+            addButton.centerYAnchor.constraint(
+                equalTo: roundBackgroundView.centerYAnchor),
+            addButton.trailingAnchor.constraint(
+                equalTo: roundBackgroundView.trailingAnchor,
+                constant: -Constraint.AddButton.trailingSpacing)
         ])
     }
 }
-
-//добавить лейблы  и кнопки на ячейки
-// при нажатии на кнопки печатать плай и адд
-// добавить кнопку "добавить слово" и при нажатии на эту кнопку печатать добавить слово
-// подумать как в зависимости от порядка ячейки передавать цвет

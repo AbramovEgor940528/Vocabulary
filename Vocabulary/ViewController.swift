@@ -11,11 +11,18 @@ class ViewController: UIViewController {
     
     static var reuseIdentifier: String = "Cell"
     
+   private let colours = [
+        UIColor.purple,
+        UIColor.green,
+        UIColor.systemPink,
+        UIColor.blue,
+        UIColor.cyan,
+    ]
+    
     private enum Layout {
         enum AddButton {
             static let height: CGFloat = 48
             static let cornerRadius: CGFloat = height/2
-            //            static let lateralSpacing: CGFloat = 112
             static let bottomSpacing: CGFloat = 104
             static let widthButton: CGFloat = 206
         }
@@ -94,7 +101,7 @@ class ViewController: UIViewController {
                 constant: -Layout.TableViewConstraints.lateralSpacing),
             
             addWordButton.bottomAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+                equalTo: view.bottomAnchor,
                 constant: -Layout.AddButton.bottomSpacing),
             addWordButton.heightAnchor.constraint(
                 equalToConstant: Layout.AddButton.height),
@@ -124,7 +131,7 @@ class ViewController: UIViewController {
     @objc func tapPlayButton(_ sender: UIButton) {
         print("Нажали кнопку Воспроизвести слово")
     }
-}
+}  
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,21 +147,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.addButton.addTarget(self, action: #selector(tapAddButton(_ :)), for: .touchUpInside)
         
         configCell(cell: cell, dataSource: words[indexPath.row])
+       
+//        switch indexPath.row % colours.count {
+//                case 0:
+//            cell.configCell(model: <#T##TableViewCell.Model#>)
+//        default:
+//            <#code#>
+//        }
         
-        switch indexPath.row % 5 {
-        case 0:
-            cell.backgroundColor = UIColor.purple
-        case 1:
-            cell.backgroundColor = UIColor.green
-        case 2:
-            cell.backgroundColor = UIColor.systemPink
-        case 3:
-            cell.backgroundColor = UIColor.blue
-        case 4:
-            cell.backgroundColor = UIColor.cyan
-        default:
-            cell.backgroundColor = UIColor.white
-        }
         return cell
     }
     
