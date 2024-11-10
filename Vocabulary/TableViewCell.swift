@@ -18,9 +18,10 @@ final class TableViewCell: UITableViewCell {
     
     private enum Constraint {
         enum RoundBackgroundView {
-            static let lateralSpacing: CGFloat = 8
+            static let horizontalSpacing: CGFloat = 8
             static let verticalSpacing: CGFloat = 4
             static let height: CGFloat = 120
+            static let radius: CGFloat = 20
         }
         enum WordLabel {
             static let topSpacing: CGFloat = 40
@@ -86,7 +87,7 @@ final class TableViewCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .red
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = Constraint.RoundBackgroundView.radius
 
         
         return view
@@ -96,10 +97,10 @@ final class TableViewCell: UITableViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "plus"), for: .normal)
-//        let action = UIAction { _ in
-//        print("Нажали кнопку добавить")
-//        }
-//        button.addAction (action, for: .touchUpInside)
+        let action = UIAction { _ in
+        print("Нажали кнопку добавить")
+        }
+        button.addAction (action, for: .touchUpInside)
         
         return button
     }()
@@ -108,10 +109,13 @@ final class TableViewCell: UITableViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "play"), for: .normal)
-        
+        let action = UIAction { _ in
+        print("Нажали кнопку Воспроизвести слово")
+        }
+        button.addAction (action, for: .touchUpInside)
         return button
     }()
-    
+   
     func configCell(model: Model) {
         wordLabel.text = model.word
         transcriptionLabel.text = model.transcription
@@ -128,6 +132,7 @@ final class TableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     private func setupCell() {
         addSubview(roundBackgroundView)
         roundBackgroundView.addSubview(wordLabel)
@@ -146,10 +151,10 @@ final class TableViewCell: UITableViewCell {
                 constant: -Constraint.RoundBackgroundView.verticalSpacing),
             roundBackgroundView.leadingAnchor.constraint(
                 equalTo: leadingAnchor,
-                constant: Constraint.RoundBackgroundView.lateralSpacing),
+                constant: Constraint.RoundBackgroundView.horizontalSpacing),
             roundBackgroundView.trailingAnchor.constraint(
                 equalTo: trailingAnchor,
-                constant: -Constraint.RoundBackgroundView.lateralSpacing),
+                constant: -Constraint.RoundBackgroundView.horizontalSpacing),
             roundBackgroundView.heightAnchor.constraint(
                 equalToConstant: Constraint.RoundBackgroundView.height),
             

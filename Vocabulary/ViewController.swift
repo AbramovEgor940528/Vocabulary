@@ -9,15 +9,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    static var reuseIdentifier: String = "Cell"
-    
-   private let colours = [
-        UIColor.purple,
-        UIColor.green,
+    private let colours = [
+        UIColor.systemYellow,
+        UIColor.systemGreen,
         UIColor.systemPink,
-        UIColor.blue,
+        UIColor.systemBlue,
         UIColor.cyan,
     ]
+    private enum Colours {
+        static let yellow = UIColor.systemYellow
+        static let green = UIColor.systemGreen
+        static let pink = UIColor.systemPink
+        static let blue = UIColor.systemBlue
+        static let cyan = UIColor.cyan
+    }
     
     private enum Layout {
         enum AddButton {
@@ -38,7 +43,10 @@ class ViewController: UIViewController {
         button.setTitle(NSLocalizedString("AddWord", comment: ""), for: .normal)
         button.backgroundColor = .black
         button.layer.cornerRadius = Layout.AddButton.cornerRadius
-        button.addTarget(self, action: #selector(tapAddWord(_ :)), for: .touchUpInside)
+        let action = UIAction { _ in
+        print("Нажали кнопку добавить слово")
+        }
+        button.addAction (action, for: .touchUpInside)
         
         return button
     }()
@@ -52,9 +60,6 @@ class ViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: "Cell")
         
         return tableView
     }()
@@ -69,9 +74,9 @@ class ViewController: UIViewController {
     ]
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         setupView()
+        setupTableView()
     }
     
     private func addSubviews() {
@@ -79,8 +84,13 @@ class ViewController: UIViewController {
         view.addSubview(addWordButton)
     }
     
+    enum LocalizedString {
+        static let dictionaryTitle = NSLocalizedString("DictionaryTitle", comment: "")
+    
+    }
+    
     private func setupNavBar() {
-        title = "Словарь"
+        title = LocalizedString.dictionaryTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -110,6 +120,11 @@ class ViewController: UIViewController {
             addWordButton.widthAnchor.constraint(equalToConstant: Layout.AddButton.widthButton)
         ])
     }
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: "\(TableViewCell.self)")
+    }
     
     private func setupView() {
         addSubviews()
@@ -117,56 +132,44 @@ class ViewController: UIViewController {
         setupNavBar()
         view.backgroundColor = .systemBackground
     }
-    
-    
-    
-    @objc func tapAddButton(_ sender: UIButton) {
-        print("Нажали кнопку добавить")
-    }
-    
-    @objc func tapAddWord(_ sender: UIButton) {
-        print("Нажали кнопку Добавить слово")
-    }
-    
-    @objc func tapPlayButton(_ sender: UIButton) {
-        print("Нажали кнопку Воспроизвести слово")
-    }
-}  
+}
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func didTapCell(at index: Int) {
+        print("Индекс ячейки \(index)")
+    }
+  
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return words.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "\(TableViewCell.self)", for: indexPath) as? TableViewCell
         else {
             return UITableViewCell()
         }
-        cell.playButton.addTarget(self, action: #selector(tapPlayButton(_ :)), for: .touchUpInside)
-        cell.addButton.addTarget(self, action: #selector(tapAddButton(_ :)), for: .touchUpInside)
-        
-        configCell(cell: cell, dataSource: words[indexPath.row])
-       
-//        switch indexPath.row % colours.count {
-//                case 0:
-//            cell.configCell(model: <#T##TableViewCell.Model#>)
-//        default:
-//            <#code#>
-//        }
+
+        configCell(cell: cell, dataSource: words[indexPath.row], index: indexPath.row)
         
         return cell
     }
     
-    private func configCell(cell: TableViewCell, dataSource: DataSource) {
+    private func configCell(cell: TableViewCell, dataSource: DataSource, index: Int) {
         cell.configCell(
             model:
                 TableViewCell.Model(
                     word: dataSource.word,
                     transcription: dataSource.transcription,
                     translation: dataSource.translation,
-                    backgroundColour: .cyan
+                    backgroundColour: getbackgroundColour(index)
                 )
         )
     }
+    
+    private func getbackgroundColour(_ index: Int) -> UIColor {
+        
+        return colours[index % 5]
+    }
+
 }
