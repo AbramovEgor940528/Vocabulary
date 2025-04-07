@@ -8,6 +8,9 @@
 import UIKit
 
 final class TableViewCell: UITableViewCell {
+
+    var addActionCallback: (() -> ())?
+    var playActionCallback: (() -> ())?
     
     struct Model {
         let word: String
@@ -89,30 +92,22 @@ final class TableViewCell: UITableViewCell {
         view.backgroundColor = .red
         view.layer.cornerRadius = Constraint.RoundBackgroundView.radius
 
-        
         return view
     }()
     
-    let addButton: UIButton = {
+    private let addButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "plus"), for: .normal)
-        let action = UIAction { _ in
-        print("Нажали кнопку добавить")
-        }
-        button.addAction (action, for: .touchUpInside)
         
         return button
     }()
     
-    let playButton: UIButton = {
+    private let playButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "play"), for: .normal)
-        let action = UIAction { _ in
-        print("Нажали кнопку Воспроизвести слово")
-        }
-        button.addAction (action, for: .touchUpInside)
+        
         return button
     }()
    
@@ -127,6 +122,7 @@ final class TableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.isUserInteractionEnabled = false
         setupCell()
+        setupButtonsAction()
     }
     
     required init?(coder: NSCoder) {
@@ -210,5 +206,17 @@ final class TableViewCell: UITableViewCell {
                 equalTo: roundBackgroundView.trailingAnchor,
                 constant: -Constraint.AddButton.trailingSpacing)
         ])
+    }
+    
+    private func setupButtonsAction() {
+        let addAction = UIAction { [weak self] _ in
+            self?.addActionCallback?()
+        }
+        addButton.addAction (addAction, for: .touchUpInside)
+        
+        let playAction = UIAction { [weak self] _ in
+            self?.playActionCallback?()
+        }
+        playButton.addAction(playAction, for: .touchUpInside)
     }
 }

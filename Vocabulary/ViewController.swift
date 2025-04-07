@@ -40,10 +40,12 @@ class ViewController: UIViewController {
     private lazy var addWordButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(NSLocalizedString("AddWord", comment: ""), for: .normal)
+        button.setTitle(LocalizedString.buttonTitle, for: .normal)
         button.backgroundColor = .black
         button.layer.cornerRadius = Layout.AddButton.cornerRadius
         let action = UIAction { _ in
+            let vc = AddWordViewController()
+            self.present(vc, animated: true)
         print("Нажали кнопку добавить слово")
         }
         button.addAction (action, for: .touchUpInside)
@@ -57,7 +59,7 @@ class ViewController: UIViewController {
         let translation: String
     }
     
-    private lazy var tableView: UITableView = {
+    private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -82,11 +84,6 @@ class ViewController: UIViewController {
     private func addSubviews() {
         view.addSubview(tableView)
         view.addSubview(addWordButton)
-    }
-    
-    enum LocalizedString {
-        static let dictionaryTitle = NSLocalizedString("DictionaryTitle", comment: "")
-    
     }
     
     private func setupNavBar() {
@@ -139,10 +136,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         print("Индекс ячейки \(index)")
     }
   
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return words.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(TableViewCell.self)", for: indexPath) as? TableViewCell
@@ -158,18 +155,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     private func configCell(cell: TableViewCell, dataSource: DataSource, index: Int) {
         cell.configCell(
             model:
-                TableViewCell.Model(
+                TableViewCell
+                .Model(
                     word: dataSource.word,
                     transcription: dataSource.transcription,
                     translation: dataSource.translation,
-                    backgroundColour: getbackgroundColour(index)
+                    backgroundColour: getbackgroundColour(
+                        index
+                    )
                 )
         )
+        
+        cell.addActionCallback = {
+            print("Ячейка с индексом \(index). Кнопка - Добавить")
+        }
+        cell.playActionCallback = {
+            print("Ячейка с индексом \(index). Кнопка - Воспроизвести")
+        }
     }
     
     private func getbackgroundColour(_ index: Int) -> UIColor {
-        
-        return colours[index % 5]
+        return colours[index % colours.count]
     }
-
 }

@@ -37,10 +37,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
      
         wordListViewController.tabBarItem.image = .add
         testViewController.view.backgroundColor = .systemYellow
-        testViewController.title = "Тест"
+        testViewController.title = LocalizedString.testTitle
         testViewController.tabBarItem.image = .strokedCheckmark
         quizViewController.view.backgroundColor = .systemCyan
-        quizViewController.title = "Карточки"
+        quizViewController.title = LocalizedString.cardsTitle
         quizViewController.tabBarItem.image = .actions
         
         

@@ -14,6 +14,11 @@
 		7E041C342C91F5C00015FB26 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7E041C332C91F5C00015FB26 /* Base */; };
 		7E041C3C2C9727580015FB26 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E041C3B2C9727580015FB26 /* TableViewCell.swift */; };
 		7E107F262CAAE98B000FAEBD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7E107F252CAAE98B000FAEBD /* Localizable.xcstrings */; };
+		7E107F482CF3714F000FAEBD /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E107F472CF3714F000FAEBD /* Localization.swift */; };
+		7E57E4972D8841D70046808F /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E57E4962D8841D70046808F /* NetworkModels.swift */; };
+		7E57E4A02D8876780046808F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E57E49F2D88765E0046808F /* NetworkService.swift */; };
+		7E57E4A52D94605D0046808F /* AddWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E57E4A42D94605D0046808F /* AddWordViewController.swift */; };
+		7E57E4A82DA426A80046808F /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E57E4A72DA426A10046808F /* NetworkServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,11 @@
 		7E041C3B2C9727580015FB26 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		7E107F242CAAE930000FAEBD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E107F252CAAE98B000FAEBD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		7E107F472CF3714F000FAEBD /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		7E57E4962D8841D70046808F /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
+		7E57E49F2D88765E0046808F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		7E57E4A42D94605D0046808F /* AddWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordViewController.swift; sourceTree = "<group>"; };
+		7E57E4A72DA426A10046808F /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,16 +69,37 @@
 		7E041C262C91F5BD0015FB26 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
-				7E041C272C91F5BD0015FB26 /* AppDelegate.swift */,
 				7E041C292C91F5BD0015FB26 /* SceneDelegate.swift */,
 				7E041C2B2C91F5BD0015FB26 /* ViewController.swift */,
 				7E041C3B2C9727580015FB26 /* TableViewCell.swift */,
+				7E57E4A42D94605D0046808F /* AddWordViewController.swift */,
+				7E041C272C91F5BD0015FB26 /* AppDelegate.swift */,
+				7E107F472CF3714F000FAEBD /* Localization.swift */,
+				7E57E4A12D8877C40046808F /* Services */,
 				7E041C302C91F5C00015FB26 /* Assets.xcassets */,
 				7E041C322C91F5C00015FB26 /* LaunchScreen.storyboard */,
 				7E041C352C91F5C00015FB26 /* Info.plist */,
 				7E107F252CAAE98B000FAEBD /* Localizable.xcstrings */,
 			);
 			path = Vocabulary;
+			sourceTree = "<group>";
+		};
+		7E57E4A12D8877C40046808F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7E57E4A62DA426480046808F /* NetworkService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7E57E4A62DA426480046808F /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				7E57E4A72DA426A10046808F /* NetworkServiceError.swift */,
+				7E57E49F2D88765E0046808F /* NetworkService.swift */,
+				7E57E4962D8841D70046808F /* NetworkModels.swift */,
+			);
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +175,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E041C2C2C91F5BD0015FB26 /* ViewController.swift in Sources */,
+				7E57E4A82DA426A80046808F /* NetworkServiceError.swift in Sources */,
+				7E57E4A02D8876780046808F /* NetworkService.swift in Sources */,
+				7E57E4A52D94605D0046808F /* AddWordViewController.swift in Sources */,
+				7E107F482CF3714F000FAEBD /* Localization.swift in Sources */,
 				7E041C3C2C9727580015FB26 /* TableViewCell.swift in Sources */,
+				7E57E4972D8841D70046808F /* NetworkModels.swift in Sources */,
 				7E041C282C91F5BD0015FB26 /* AppDelegate.swift in Sources */,
 				7E041C2A2C91F5BD0015FB26 /* SceneDelegate.swift in Sources */,
 			);

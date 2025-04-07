@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "AddWord" : {
+    "AddWordTitle" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -12,8 +12,25 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Добавить слово"
+          }
+        }
+      }
+    },
+    "CardsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cards"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Карточки"
           }
         }
       }
@@ -31,6 +48,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Словарь"
+          }
+        }
+      }
+    },
+    "TestTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тест"
           }
         }
       }
