@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func getRootViewController() -> UIViewController {
         let tabBarController = UITabBarController()
-        let wordListViewController = UINavigationController (rootViewController: ViewController())
+        let wordListViewController = UINavigationController (rootViewController: ListViewController())
         let testViewController = UINavigationController (rootViewController: UIViewController())
         let quizViewController = UINavigationController (rootViewController: UIViewController())
         

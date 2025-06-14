@@ -1,13 +1,6 @@
-//
-//  TableViewCell.swift
-//  Vocabulary
-//
-//  Created by Егор Абрамов on 15.09.2024.
-//
-
 import UIKit
 
-final class TableViewCell: UITableViewCell {
+final class ListTableViewCell: UITableViewCell {
 
     var addActionCallback: (() -> ())?
     var playActionCallback: (() -> ())?

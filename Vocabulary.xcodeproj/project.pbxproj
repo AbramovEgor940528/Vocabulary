@@ -3,33 +3,34 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7E041C282C91F5BD0015FB26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E041C272C91F5BD0015FB26 /* AppDelegate.swift */; };
 		7E041C2A2C91F5BD0015FB26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E041C292C91F5BD0015FB26 /* SceneDelegate.swift */; };
-		7E041C2C2C91F5BD0015FB26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E041C2B2C91F5BD0015FB26 /* ViewController.swift */; };
+		7E041C2C2C91F5BD0015FB26 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E041C2B2C91F5BD0015FB26 /* ListViewController.swift */; };
 		7E041C312C91F5C00015FB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E041C302C91F5C00015FB26 /* Assets.xcassets */; };
 		7E041C342C91F5C00015FB26 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7E041C332C91F5C00015FB26 /* Base */; };
-		7E041C3C2C9727580015FB26 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E041C3B2C9727580015FB26 /* TableViewCell.swift */; };
+		7E041C3C2C9727580015FB26 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E041C3B2C9727580015FB26 /* ListTableViewCell.swift */; };
 		7E107F262CAAE98B000FAEBD /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7E107F252CAAE98B000FAEBD /* Localizable.xcstrings */; };
 		7E107F482CF3714F000FAEBD /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E107F472CF3714F000FAEBD /* Localization.swift */; };
 		7E57E4972D8841D70046808F /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E57E4962D8841D70046808F /* NetworkModels.swift */; };
 		7E57E4A02D8876780046808F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E57E49F2D88765E0046808F /* NetworkService.swift */; };
 		7E57E4A52D94605D0046808F /* AddWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E57E4A42D94605D0046808F /* AddWordViewController.swift */; };
 		7E57E4A82DA426A80046808F /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E57E4A72DA426A10046808F /* NetworkServiceError.swift */; };
+		7EDF1F8A2DB9277200A05AB9 /* WordModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDF1F892DB9267D00A05AB9 /* WordModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7E041C242C91F5BD0015FB26 /* Vocabulary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vocabulary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E041C272C91F5BD0015FB26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E041C292C91F5BD0015FB26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7E041C2B2C91F5BD0015FB26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7E041C2B2C91F5BD0015FB26 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		7E041C302C91F5C00015FB26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E041C332C91F5C00015FB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E041C352C91F5C00015FB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E041C3B2C9727580015FB26 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		7E041C3B2C9727580015FB26 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		7E107F242CAAE930000FAEBD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		7E107F252CAAE98B000FAEBD /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		7E107F472CF3714F000FAEBD /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
@@ -37,7 +38,12 @@
 		7E57E49F2D88765E0046808F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7E57E4A42D94605D0046808F /* AddWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordViewController.swift; sourceTree = "<group>"; };
 		7E57E4A72DA426A10046808F /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		7EDF1F892DB9267D00A05AB9 /* WordModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7E2D8A3E2DE36A8300CDF73C /* Storage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Storage; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7E041C212C91F5BD0015FB26 /* Frameworks */ = {
@@ -69,19 +75,69 @@
 		7E041C262C91F5BD0015FB26 /* Vocabulary */ = {
 			isa = PBXGroup;
 			children = (
-				7E041C292C91F5BD0015FB26 /* SceneDelegate.swift */,
-				7E041C2B2C91F5BD0015FB26 /* ViewController.swift */,
-				7E041C3B2C9727580015FB26 /* TableViewCell.swift */,
-				7E57E4A42D94605D0046808F /* AddWordViewController.swift */,
-				7E041C272C91F5BD0015FB26 /* AppDelegate.swift */,
-				7E107F472CF3714F000FAEBD /* Localization.swift */,
+				7E2D8A3E2DE36A8300CDF73C /* Storage */,
+				7E2D8A262DE35FF000CDF73C /* Delegates */,
+				7E2D8A272DE3619600CDF73C /* Screens */,
+				7E2D8A252DE35FB300CDF73C /* Localization */,
 				7E57E4A12D8877C40046808F /* Services */,
+				7E2D8A2B2DE365BD00CDF73C /* Resourses */,
+			);
+			path = Vocabulary;
+			sourceTree = "<group>";
+		};
+		7E2D8A252DE35FB300CDF73C /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				7E107F472CF3714F000FAEBD /* Localization.swift */,
+				7E107F252CAAE98B000FAEBD /* Localizable.xcstrings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		7E2D8A262DE35FF000CDF73C /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				7E041C292C91F5BD0015FB26 /* SceneDelegate.swift */,
+				7E041C272C91F5BD0015FB26 /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		7E2D8A272DE3619600CDF73C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				7E2D8A292DE3627900CDF73C /* ListScreens */,
+				7E2D8A282DE3624D00CDF73C /* AddWordScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		7E2D8A282DE3624D00CDF73C /* AddWordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7E57E4A42D94605D0046808F /* AddWordViewController.swift */,
+			);
+			path = AddWordScreen;
+			sourceTree = "<group>";
+		};
+		7E2D8A292DE3627900CDF73C /* ListScreens */ = {
+			isa = PBXGroup;
+			children = (
+				7E041C2B2C91F5BD0015FB26 /* ListViewController.swift */,
+				7E041C3B2C9727580015FB26 /* ListTableViewCell.swift */,
+				7EDF1F892DB9267D00A05AB9 /* WordModels.swift */,
+			);
+			path = ListScreens;
+			sourceTree = "<group>";
+		};
+		7E2D8A2B2DE365BD00CDF73C /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
 				7E041C302C91F5C00015FB26 /* Assets.xcassets */,
 				7E041C322C91F5C00015FB26 /* LaunchScreen.storyboard */,
 				7E041C352C91F5C00015FB26 /* Info.plist */,
-				7E107F252CAAE98B000FAEBD /* Localizable.xcstrings */,
 			);
-			path = Vocabulary;
+			path = Resourses;
 			sourceTree = "<group>";
 		};
 		7E57E4A12D8877C40046808F /* Services */ = {
@@ -96,8 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				7E57E4A72DA426A10046808F /* NetworkServiceError.swift */,
-				7E57E49F2D88765E0046808F /* NetworkService.swift */,
 				7E57E4962D8841D70046808F /* NetworkModels.swift */,
+				7E57E49F2D88765E0046808F /* NetworkService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -116,6 +172,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				7E2D8A3E2DE36A8300CDF73C /* Storage */,
 			);
 			name = Vocabulary;
 			productName = Vocabulary;
@@ -174,12 +233,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E041C2C2C91F5BD0015FB26 /* ViewController.swift in Sources */,
+				7E041C2C2C91F5BD0015FB26 /* ListViewController.swift in Sources */,
 				7E57E4A82DA426A80046808F /* NetworkServiceError.swift in Sources */,
 				7E57E4A02D8876780046808F /* NetworkService.swift in Sources */,
 				7E57E4A52D94605D0046808F /* AddWordViewController.swift in Sources */,
 				7E107F482CF3714F000FAEBD /* Localization.swift in Sources */,
-				7E041C3C2C9727580015FB26 /* TableViewCell.swift in Sources */,
+				7E041C3C2C9727580015FB26 /* ListTableViewCell.swift in Sources */,
+				7EDF1F8A2DB9277200A05AB9 /* WordModels.swift in Sources */,
 				7E57E4972D8841D70046808F /* NetworkModels.swift in Sources */,
 				7E041C282C91F5BD0015FB26 /* AppDelegate.swift in Sources */,
 				7E041C2A2C91F5BD0015FB26 /* SceneDelegate.swift in Sources */,
@@ -331,7 +391,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7G759FHJNT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Vocabulary/Info.plist;
+				INFOPLIST_FILE = Vocabulary/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -359,7 +419,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7G759FHJNT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Vocabulary/Info.plist;
+				INFOPLIST_FILE = Vocabulary/Resourses/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
