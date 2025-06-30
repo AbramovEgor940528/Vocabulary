@@ -70,8 +70,30 @@ class CoreDataStack {
     }
     
     func deleteWord( word: String ) {
-        print(" Удалили \(word) из CD ")
-        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "WordEntity")
+//        do {
+//            let result = try context.fetch(fetchRequest) as? [WordEntity]
+//            if var result = result {
+//                for (index, element) in result.enumerated() {
+//                    if word == element.word {
+//                        result.remove(at: index)
+//                    }
+//                }
+//            }
+//        }
+        do {
+           if let result = try context.fetch(fetchRequest) as? [WordEntity],
+            let wordForDelete = result.first(where: { $0.word == word } ) {
+                context.delete(wordForDelete)
+               save()
+               print(" Удалили \(word) из CD ")
+               
+           } else {
+               print("Ошибка - не удалось найти слово")
+           }
+        } catch {
+            print("Ошибка удаления \(error)")
+        }
     }
 }
 
