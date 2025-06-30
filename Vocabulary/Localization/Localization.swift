@@ -5,4 +5,5 @@ enum LocalizedString {
     static let testTitle = NSLocalizedString("TestTitle", comment: "")
     static let cardsTitle = NSLocalizedString("CardsTitle", comment: "")
     static let buttonTitle = NSLocalizedString("AddWordTitle", comment: "")
+    
 }
